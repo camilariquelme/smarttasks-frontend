@@ -1,0 +1,25 @@
+<div class="container" style="max-width: 720px; margin: 2rem auto; padding: 1rem;">
+    <h1>SmartTasks</h1>
+
+        <div style="margin: 1rem 0; display: flex; gap: .5rem;">
+            <input [(ngModel)]="nuevaTitulo" placeholder="Nueva tarea..." style="flex:1; padding:.5rem;">
+            <select [(ngModel)]="nuevaEstado" style="padding:.5rem;">
+            <option value="pendiente">pendiente</option>
+            <option value="completada">completada</option>
+            </select>
+            <button (click)="crear()">Agregar</button>
+        </div>
+
+    <div *ngIf="cargando">Cargando...</div>
+    <div *ngIf="error">{{ error }}</div>
+
+    <ul style="list-style: none; padding: 0;">
+        <li *ngFor="let t of tareas" style="display:flex; align-items:center; gap:.5rem; padding:.5rem 0; border-bottom: 1px solid #eee;">
+        <input type="checkbox" [checked]="t.estado === 'completada'" (change)="toggleEstado(t)">
+        <span [style.textDecoration]="t.estado === 'completada' ? 'line-through' : 'none'">
+            {{ t.titulo }} <small>({{ t.estado }})</small>
+        </span>
+        <button (click)="eliminar(t)" style="margin-left:auto;">Eliminar</button>
+        </li>
+    </ul>
+</div>
