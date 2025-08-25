@@ -1,59 +1,52 @@
-# SmarttasksFrontend
+# SmartTasks Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.0.
+Aplicación web desarrollada en Angular para gestionar tareas (CRUD) conectada a una API en Flask.
 
-## Development server
+## Requisitos
 
-To start a local development server, run:
+- Node.js 18+
+- Angular CLI
+- Python 3.12 (para el backend)
+- Git
 
-```bash
-ng serve
-```
+## Instalación
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/camilariquelme/smarttasks-frontend.git
+   cd smarttasks-frontend
+2. Instala dependencias:
 
-## Code scaffolding
+            npm install
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+3. Levanta la aplicación en modo desarrollo:
 
-```bash
-ng generate component component-name
-```
+            ng serve --open --proxy-config proxy.conf.json
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+         La app se abrirá automáticamente en http://localhost:4200.
 
-```bash
-ng generate --help
-```
+## Funcionalidades
 
-## Building
+- Listar tareas existentes
 
-To build the project run:
+- Crear nuevas tareas
 
-```bash
-ng build
-```
+- Marcar tareas como completadas o pendientes
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- Eliminar tareas
 
-## Running unit tests
+## Estructura
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+   - src/app/services/tareas.service.ts → comunicación con la API Flask
 
-```bash
-ng test
-```
+   - src/app/features/tareas/ → componente principal de tareas
 
-## Running end-to-end tests
+   - proxy.conf.json → evita problemas CORS durante el desarrollo
 
-For end-to-end (e2e) testing, run:
+## Conexión con el backend
 
-```bash
-ng e2e
-```
+   La API de Flask debe ejecutarse en http://127.0.0.1:5000:
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+      python run.py
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+La aplicación Angular se comunica con el backend a través del proxy configurado.
